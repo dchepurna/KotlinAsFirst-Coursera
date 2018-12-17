@@ -5,6 +5,11 @@ import lesson1.task1.discriminant
 import kotlin.math.max
 import kotlin.math.sqrt
 
+fun main(args: Array<String>) {
+    val result = ageDescription(1)
+    println("result = $result")
+}
+
 /**
  * Пример
  *
@@ -62,7 +67,24 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
  * Мой возраст. Для заданного 0 < n < 200, рассматриваемого как возраст человека,
  * вернуть строку вида: «21 год», «32 года», «12 лет».
  */
-fun ageDescription(age: Int): String = TODO()
+fun ageDescription(age: Int): String {
+    if (age in 1..199) {
+        if (age % 10 == 1) {
+            if (age % 100 == 11)
+                return "$age лет"
+            return "$age год"
+        }
+        if (age % 10 in 2..4) {
+            if (age % 100 in 12..14) return "$age лет"
+            return "$age года"
+        }
+        if (age % 10 in 5..9) return "$age лет"
+        if (age % 10 == 0) return "$age лет"
+    }
+    return "несуществующий возраст $age"
+}
+
+
 
 /**
  * Простая
@@ -73,7 +95,22 @@ fun ageDescription(age: Int): String = TODO()
  */
 fun timeForHalfWay(t1: Double, v1: Double,
                    t2: Double, v2: Double,
-                   t3: Double, v3: Double): Double = TODO()
+                   t3: Double, v3: Double): Double {
+    val d1 = t1 * v1
+    val d2 = t2 * v2
+    val d3 = t3 * v3
+    val dHalfWay = (d1 + d2 + d3) / 2.0
+    if (d1 > d2 + d3) {
+        if (d1 == dHalfWay) return t1
+        return dHalfWay / v1
+    }
+    if (d1 + d2 > d3) {
+        if (d1 + d2 == dHalfWay) return t1 + t2
+        return t1 + (dHalfWay - d1) / v2
+    }
+    return t1 + t2 + (dHalfWay - d1 - d2) / v3
+}
+
 
 /**
  * Простая
@@ -86,7 +123,40 @@ fun timeForHalfWay(t1: Double, v1: Double,
  */
 fun whichRookThreatens(kingX: Int, kingY: Int,
                        rookX1: Int, rookY1: Int,
-                       rookX2: Int, rookY2: Int): Int = TODO()
+                       rookX2: Int, rookY2: Int): Int {
+    if (kingX != rookX1) {
+        if (kingY != rookY1) {
+            if (kingX != rookX2) {
+                if (kingY != rookY2) return 0
+            }
+        }
+    }
+
+    if (kingX == rookX1) {
+        if (kingX != rookX2) {
+            if (kingY != rookY2) return 1
+        }
+    }
+
+    if (kingY == rookY1) {
+        if (kingX != rookX2) {
+            if (kingY != rookY2) return 1
+        }
+    }
+
+    if (kingX == rookX2) {
+        if (kingX != rookX1) {
+            if (kingY != rookY1) return 2
+        }
+    }
+
+    if (kingY == rookY2) {
+        if (kingX != rookX1) {
+            if (kingY != rookY1) return 2
+        }
+    }
+    return 3
+}
 
 /**
  * Простая
