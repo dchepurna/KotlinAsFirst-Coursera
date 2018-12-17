@@ -1,14 +1,9 @@
-# Created by .ignore support plugin (hsz.mobi)
-
-
-.idea/*.xml
-.idea/copyright
-.idea/libraries
-.idea/shelf
-target
-out
-
 *.iml
-*.ipr
-*.iws
-*.zip
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+/target
+.attach_*
