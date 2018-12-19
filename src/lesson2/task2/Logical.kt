@@ -2,6 +2,7 @@
 package lesson2.task2
 
 import kotlinx.html.InputType
+import lesson1.task1.angleInRadian
 import lesson1.task1.sqr
 import kotlin.math.abs
 import kotlin.math.sqrt
@@ -62,9 +63,9 @@ fun circleInside(x1: Double, y1: Double, r1: Double,
  * Вернуть true, если кирпич пройдёт
  */
 fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean =
-        (a == r) && (c == s) ||
-                (a <= s) && (c <= r) ||
-                (a <= r) && (b <= s) ||
-                (a <= s) && (b <= r) ||
-                (b <= r) && (c <= s) ||
-                (b <= s) && (c <= r)
+        (a <= s) && (c <= r)
+                || (a <= r) && (c <= s)
+                || (a <= r) && (b <= s)
+                || (a <= s) && (b <= r)
+                || (b <= r) && (c <= s)
+                || (b <= s) && (c <= r)
