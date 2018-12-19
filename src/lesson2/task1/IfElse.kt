@@ -4,6 +4,7 @@ package lesson2.task1
 import lesson1.task1.discriminant
 import kotlin.math.max
 import kotlin.math.sqrt
+import kotlin.math.abs
 
 fun main(args: Array<String>) {
     val result = ageDescription(1)
@@ -170,7 +171,12 @@ fun whichRookThreatens(kingX: Int, kingY: Int,
  */
 fun rookOrBishopThreatens(kingX: Int, kingY: Int,
                           rookX: Int, rookY: Int,
-                          bishopX: Int, bishopY: Int): Int = TODO()
+                          bishopX: Int, bishopY: Int): Int {
+    if (kingX == rookX || kingY == rookY && (abs(kingX - bishopX) != abs(kingY - bishopY))) return 1
+    if (kingX != rookX && kingY != rookY && (abs(kingX - bishopX) == abs(kingY - bishopY))) return 2
+    if (kingX == rookX || kingY == rookY && (abs(kingX - bishopX) == abs(kingY - bishopY))) return 3
+    return 0
+}
 
 /**
  * Простая
