@@ -1,6 +1,7 @@
 @file:Suppress("UNUSED_PARAMETER")
 package lesson3.task1
 
+import kotlin.math.min
 import kotlin.math.sqrt
 
 /**
@@ -82,8 +83,17 @@ fun fib(n: Int): Int = TODO()
  * Для заданных чисел m и n найти наименьшее общее кратное, то есть,
  * минимальное число k, которое делится и на m и на n без остатка
  */
-fun lcm(m: Int, n: Int): Int = TODO()
-
+fun lcm(m: Int, n: Int): Int {
+    var k = min(m, n)
+    var count = 0
+    val result = k * count
+    while (k > 0) {
+        if (k % m == 0 && k % n == 0) return k
+        else k += min(m, n)
+        count++
+    }
+    return result
+}
 /**
  * Простая
  *
