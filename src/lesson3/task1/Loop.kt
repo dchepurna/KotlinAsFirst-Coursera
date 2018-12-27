@@ -1,6 +1,8 @@
 @file:Suppress("UNUSED_PARAMETER")
 package lesson3.task1
 
+import lesson1.task1.sqr
+import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sqrt
 
@@ -99,14 +101,31 @@ fun lcm(m: Int, n: Int): Int {
  *
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
-fun minDivisor(n: Int): Int = TODO()
+fun minDivisor(n: Int): Int {
+    var div = 2
+    val result = div
+    while (n > 1) {
+        if (n % div == 0) return div
+        div++
+    }
+    return result
+}
 
 /**
  * Простая
  *
  * Для заданного числа n > 1 найти максимальный делитель, меньший n
  */
-fun maxDivisor(n: Int): Int = TODO()
+fun maxDivisor(n: Int): Int {
+    var div = n - 1
+    val result = div
+    if (isPrime(n)) return 1
+    while (n > 1) {
+        if (n % div == 0) return div
+        div--
+    }
+    return result
+}
 
 /**
  * Простая
@@ -115,7 +134,14 @@ fun maxDivisor(n: Int): Int = TODO()
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean = TODO()
+fun isCoPrime(m: Int, n: Int): Boolean {
+    var d = min(m, n) - 1
+    while (d > 1) {
+        if (m % d == 0 && n % d == 0 && d > 1) return false
+        d--
+    }
+    return true
+}
 
 /**
  * Простая
@@ -124,7 +150,14 @@ fun isCoPrime(m: Int, n: Int): Boolean = TODO()
  * то есть, существует ли такое целое k, что m <= k*k <= n.
  * Например, для интервала 21..28 21 <= 5*5 <= 28, а для интервала 51..61 квадрата не существует.
  */
-fun squareBetweenExists(m: Int, n: Int): Boolean = TODO()
+fun squareBetweenExists(m: Int, n: Int): Boolean {
+    var k = 1
+    while (sqr(k) <= n) {
+        if (sqr(k) in m..n) return true
+        k++
+    }
+    return false
+}
 
 /**
  * Средняя
