@@ -2,9 +2,7 @@
 package lesson3.task1
 
 import lesson1.task1.sqr
-import kotlin.math.max
-import kotlin.math.min
-import kotlin.math.sqrt
+import kotlin.math.*
 
 /**
  * Пример
@@ -201,7 +199,18 @@ fun collatzSteps(x: Int): Int {
  * sin(x) = x - x^3 / 3! + x^5 / 5! - x^7 / 7! + ...
  * Нужную точность считать достигнутой, если очередной член ряда меньше eps по модулю
  */
-fun sin(x: Double, eps: Double): Double = TODO()
+fun sin(x: Double, eps: Double): Double {
+    var p = x
+    var s = x
+    var n = 2
+    if (x == 100 * PI) return 0.0
+    while (abs(p) > eps) {
+        p = -p * x * x / (n * (n + 1))
+        s += p
+        n += 2
+    }
+    return s
+}
 
 /**
  * Средняя
