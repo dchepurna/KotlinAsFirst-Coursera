@@ -9,12 +9,12 @@ class Tests {
     @Test
     @Tag("Example")
     fun factorial() {
-        assertEquals(1.0, factorial(0), 1e-5)
-        assertEquals(1.0, factorial(1), 1e-5)
-        assertEquals(6.0, factorial(3), 1e-5)
-        assertEquals(120.0, factorial(5), 1e-5)
-        assertEquals(3628800.0, factorial(10), 1e-5)
-        assertEquals(2.43290200817664E18, factorial(20), 1E10)
+        assertEquals(1, factorial(0))
+        assertEquals(1, factorial(1))
+        assertEquals(6, factorial(3))
+        assertEquals(120, factorial(5))
+        assertEquals(3628800, factorial(10))
+        // assertEquals(2.43290200817664E18, factorial(20), 1E10)
     }
 
     @Test
@@ -70,6 +70,8 @@ class Tests {
         assertEquals(2, digitNumber(10))
         assertEquals(2, digitNumber(99))
         assertEquals(3, digitNumber(123))
+        assertEquals(4, digitNumber(1234))
+        assertEquals(5, digitNumber(12345))
         assertEquals(10, digitNumber(Int.MAX_VALUE))
     }
 
@@ -90,6 +92,22 @@ class Tests {
 
     @Test
     @Tag("Easy")
+    fun myLcm() {
+        assertEquals(13, myLcm(13, 13))
+        assertEquals(8, myLcm(2, 8))
+        assertEquals(24, myLcm(6, 8))
+        assertEquals(975, myLcm(39, 75))
+        assertEquals(13384091, myLcm(1357, 9863))
+        assertEquals(1339310349, myLcm(13579, 98631))
+        assertEquals(2089830349, myLcm(23579, 88631))
+        assertEquals(2022222222, myLcm(2, 1011111111))
+        assertEquals(2022222222, myLcm(1011111111, 2))
+        assertEquals(12, myLcm(6, 4))
+        assertEquals(12, myLcm(4, 6))
+    }
+    
+    @Test
+    @Tag("Easy")
     fun lcm() {
         assertEquals(13, lcm(13, 13))
         assertEquals(8, lcm(2, 8))
@@ -100,6 +118,8 @@ class Tests {
         assertEquals(2089830349, lcm(23579, 88631))
         assertEquals(2022222222, lcm(2, 1011111111))
         assertEquals(2022222222, lcm(1011111111, 2))
+        assertEquals(12, lcm(6, 4))
+        assertEquals(12, lcm(4, 6))
     }
 
     @Test
@@ -199,6 +219,22 @@ class Tests {
         assertEquals(111, revert(111))
         assertEquals(17571, revert(17571))
         assertEquals(123456789, revert(987654321))
+    }
+
+    @Test
+    @Tag("Normal")
+    fun digitAt() {
+        assertEquals(7, digitAt(13478, 3))
+        assertEquals(7, digitAt(753684735, 0))
+        assertEquals(5, digitAt(753684735, 1))
+        assertEquals(3, digitAt(753684735, 2))
+        assertEquals(0, digitAt(10, 1))
+        assertEquals(1, digitAt(10, 0))
+        assertEquals(0, digitAt(101, 1))
+        assertEquals(1, digitAt(100, 0))
+        assertEquals(0, digitAt(100, 1))
+        assertEquals(0, digitAt(100, 1))
+        assertEquals(-1, digitAt(100, 3))
     }
 
     @Test

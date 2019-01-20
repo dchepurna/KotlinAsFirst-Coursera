@@ -9,8 +9,8 @@ import kotlin.math.*
  *
  * Вычисление факториала
  */
-fun factorial(n: Int): Double {
-    var result = 1.0
+fun factorial(n: Int): Int {
+    var result = 1
     for (i in 1..n) {
         result = result * i // Please do not fix in master
     }
@@ -67,15 +67,27 @@ fun digitCountInNumber(n: Int, m: Int): Int =
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun digitNumber(n: Int): Int = TODO()
+fun digitNumber(n: Int): Int {
+    var count = 1
+    var number = n
+    while (number >= 10) {
+        count++
+        number /= 10
+    }
+    return count
+}
 
 /**
  * Простая
  *
  * Найти число Фибоначчи из ряда 1, 1, 2, 3, 5, 8, 13, 21, ... с номером n.
  * Ряд Фибоначчи определён следующим образом: fib(1) = 1, fib(2) = 1, fib(n+2) = fib(n) + fib(n+1)
- */
-fun fib(n: Int): Int = TODO()
+*/
+
+fun fib(n: Int): Int {
+    if (n == 1 || n == 2) return 1
+    return fib(n - 2) + fib(n - 1)
+}
 
 /**
  * Простая
@@ -83,17 +95,25 @@ fun fib(n: Int): Int = TODO()
  * Для заданных чисел m и n найти наименьшее общее кратное, то есть,
  * минимальное число k, которое делится и на m и на n без остатка
  */
-fun lcm(m: Int, n: Int): Int {
-    var k = min(m, n)
+fun myLcm(m: Int, n: Int): Int {
+    val maxArg = max(m, n)
+    var k = maxArg
     var count = 0
-    val result = k * count
-    while (k > 0) {
-        if (k % m == 0 && k % n == 0) return k
-        else k += min(m, n)
+    while (k % m != 0 || k % n != 0) {
+        k += maxArg
         count++
     }
-    return result
+    return k
 }
+
+fun lcm(m: Int, n: Int): Int =
+        abs(m * n) / gcd(m, n)
+
+fun gcd(m: Int, n: Int): Int {
+    if (n == 0) return m
+    return gcd(n, m % n)
+}
+
 /**
  * Простая
  *
@@ -101,12 +121,10 @@ fun lcm(m: Int, n: Int): Int {
  */
 fun minDivisor(n: Int): Int {
     var div = 2
-    val result = div
-    while (n > 1) {
-        if (n % div == 0) return div
+    while (n % div != 0) {
         div++
     }
-    return result
+    return div
 }
 
 /**
@@ -116,13 +134,10 @@ fun minDivisor(n: Int): Int {
  */
 fun maxDivisor(n: Int): Int {
     var div = n - 1
-    val result = div
-    if (isPrime(n)) return 1
-    while (n > 1) {
-        if (n % div == 0) return div
+    while (n % div != 0) {
         div--
     }
-    return result
+    return div
 }
 
 /**
@@ -229,6 +244,15 @@ fun cos(x: Double, eps: Double): Double = TODO()
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun revert(n: Int): Int = TODO()
+
+/**
+ *
+ * Returns digit from number n at index i.
+ * If i is out of range of digits n then returns -1
+ * First index is 0
+ * Operations with strings are denied
+ */
+fun digitAt(n:Int, i: Int): Int = TODO()
 
 /**
  * Средняя
