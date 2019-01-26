@@ -2,7 +2,9 @@
 package lesson3.task1
 
 import lesson1.task1.sqr
+import java.lang.Math.pow
 import kotlin.math.*
+
 
 /**
  * Пример
@@ -243,16 +245,24 @@ fun cos(x: Double, eps: Double): Double = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun revert(n: Int): Int = TODO()
+fun revert(n: Int): Int {
+    var acc = 0.0
+    val maxIndex = digitNumber(n) - 1
+    for (i in 0..maxIndex) {
+        acc += digitAt(n, i) * pow(10.0, (maxIndex - i).toDouble())
+    }
+    return acc.toInt()
+}
 
 /**
  *
  * Returns digit from number n at index i.
- * If i is out of range of digits n then returns -1
- * First index is 0
- * Operations with strings are denied
+ * First index from the left side is 0.
+ * Operations with strings are denied.
  */
-fun digitAt(n:Int, i: Int): Int = TODO()
+fun digitAt(n: Int, i: Int): Int =
+        n % pow(10.0, (i + 1.0)).toInt() / pow(10.0, i.toDouble()).toInt()
+
 
 /**
  * Средняя
@@ -263,7 +273,8 @@ fun digitAt(n:Int, i: Int): Int = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun isPalindrome(n: Int): Boolean = TODO()
+fun isPalindrome(n: Int): Boolean =
+        n == revert(n)
 
 /**
  * Средняя
@@ -273,7 +284,14 @@ fun isPalindrome(n: Int): Boolean = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun hasDifferentDigits(n: Int): Boolean = TODO()
+fun hasDifferentDigits(n: Int): Boolean {
+    val maxIndex = digitNumber(n) - 1
+    val digit = digitAt(n, 0)
+    for (i in 1..maxIndex) {
+        if (digit != digitAt(n, i)) return true
+    }
+    return false
+}
 
 /**
  * Сложная

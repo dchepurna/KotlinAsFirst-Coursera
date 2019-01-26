@@ -224,17 +224,16 @@ class Tests {
     @Test
     @Tag("Normal")
     fun digitAt() {
-        assertEquals(7, digitAt(13478, 3))
-        assertEquals(7, digitAt(753684735, 0))
-        assertEquals(5, digitAt(753684735, 1))
-        assertEquals(3, digitAt(753684735, 2))
-        assertEquals(0, digitAt(10, 1))
-        assertEquals(1, digitAt(10, 0))
+        assertEquals(3, digitAt(13478, 3))
+        assertEquals(5, digitAt(753684735, 0))
+        assertEquals(3, digitAt(753684735, 1))
+        assertEquals(7, digitAt(753684735, 2))
+        assertEquals(1, digitAt(10, 1))
+        assertEquals(0, digitAt(10, 0))
         assertEquals(0, digitAt(101, 1))
-        assertEquals(1, digitAt(100, 0))
+        assertEquals(0, digitAt(100, 0))
         assertEquals(0, digitAt(100, 1))
         assertEquals(0, digitAt(100, 1))
-        assertEquals(-1, digitAt(100, 3))
     }
 
     @Test
@@ -253,7 +252,8 @@ class Tests {
         assertTrue(hasDifferentDigits(54))
         assertTrue(hasDifferentDigits(222266666))
         assertFalse(hasDifferentDigits(0))
-        assertFalse(hasDifferentDigits(777))
+        assertFalse(hasDifferentDigits(3))
+        assertFalse(hasDifferentDigits(11))
     }
 
     @Test

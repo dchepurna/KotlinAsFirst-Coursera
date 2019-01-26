@@ -48,8 +48,8 @@ fun quadraticRootProduct(a: Double, b: Double, c: Double): Double {
  * Пример главной функции
  */
 fun main(args: Array<String>) {
-    val result = angleInRadian(deg = 36, min = 14, sec = 35)
-    println("result = $result")
+    for (i in 0..3) print(i)
+    for (i in 1..3) print(i)
 }
 
 /**
